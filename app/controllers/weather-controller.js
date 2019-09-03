@@ -12,7 +12,9 @@ function _drawWeather() {
 
 	document.getElementById('weather').innerHTML = _weatherService.Weather.Template
 }
-
+// Subtract 273.15 from your Kelvin temperature
+// Multiply this number by 1.8 (this is the decimal value of 9/5).
+// Add 32 to this number.
 
 
 export default class WeatherController {

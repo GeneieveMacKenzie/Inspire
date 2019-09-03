@@ -6,10 +6,10 @@ export default class Quote {
 
     get Template() {
         return `
-          <div class="card" style="background-color:rgb(255, 255, 255,.2)">
+          <div class="card" style="background-color:rgb(255, 255, 255,.6)">
             <div class="card-body">
-               <h1 class="card-title">${this.body}</h1>
-               <h3 class="card-text">${this.author}</h3>
+               <h4 class="card-title">${this.body}</h4>
+               <h5 class="card-text">${this.author}</h5>
             </div>
           </div>`
     }

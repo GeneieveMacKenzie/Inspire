@@ -9,31 +9,31 @@
 	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
+<html>
 
 <body id="bg-image" height="100vh">
-	<div class="row">
+	<div class="row flex p-5" style="color: rgb(105, 103, 103)">
 		<div id="weather">
 		</div>
 	</div>
-	<div class="row">
-
-		<div id="quote">
+	<div>
+		<div id="todo-error"></div>
+		<div class="row d-flex justify-content-center">
+			<form onsubmit="app.controllers.todoController.addTodo(event)" id="add-todo">
+				<div class="form-group" id="description">
+					<input type="text" class="form-control" name="description" placeholder='Add Todo' required>
+				</div>
+				<button class="btn-sm" type="submit">add</button>
+			</form>
 		</div>
 	</div>
 
-	<div>
-		<div id="todo-error"></div>
-		<form onsubmit="app.controllers.todoController.addTodo(event)" id="add-todo">
-			<div class="form-group" id="todos">
-				<input type="text" class="form-control" name="item" placeholder='Add Item' required>
-			</div>
-			<button class="btn-sm btn-danger" type="submit">add item</button>
-		</form>
+	<div class="row flex2" style="color: rgb(105, 103, 103)">
+		<div id="quote">
+		</div>
 	</div>
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 	<script type="module" src="app/main.js"></script>
 </body>
 
 </html>
-<html>

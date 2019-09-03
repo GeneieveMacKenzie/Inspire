@@ -8,7 +8,16 @@
   background-size: cover;
 }
 
-#quote{
+
+.flex{
   display: flex;
   justify-content: flex-end;
+
+}
+
+.flex2{
+  padding-top: 350px;
+  display: flex;
+  justify-content: center
+
 }

@@ -7,14 +7,13 @@ export default class Weather {
 
     //TODO You should probably convert the temperature data to either F or C
     //      check out the other data that comes back and see if there is anything you want to try
-
     this.city = data.name
-    this.kelvin = data.main.temp
+    this.kelvin = Math.round((data.main.temp - 273) * 9 / 5 + 32) + '&deg;' + 'F'
   }
 
   get Template() {
     return `
-      <div class="card" style="background-color:rgb(255, 255, 255,.2)">
+      <div class="card" style="background-color:rgb(255, 255, 255,.6)" id="add">
         <div class="card-body">
            <h1 class="card-title">${this.city}</h1>
            <h3 class="card-text">${this.kelvin}</h3>
