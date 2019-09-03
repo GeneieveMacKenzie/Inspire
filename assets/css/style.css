@@ -2,3 +2,13 @@
   color: red;
   font-size: 2em;
 }
+
+#bg-image{
+  background: no-repeat;
+  background-size: cover;
+}
+
+#quote{
+  display: flex;
+  justify-content: flex-end;
+}

@@ -11,4 +11,14 @@ export default class Weather {
     this.city = data.name
     this.kelvin = data.main.temp
   }
+
+  get Template() {
+    return `
+      <div class="card" style="background-color:rgb(255, 255, 255,.2)">
+        <div class="card-body">
+           <h1 class="card-title">${this.city}</h1>
+           <h3 class="card-text">${this.kelvin}</h3>
+        </div>
+      </div>`
+  }
 }

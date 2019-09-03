@@ -7,14 +7,18 @@ var _weatherService = new WeatherService()
 
 
 //TODO Complete rendering data to the screen
-function drawWeather() {
+function _drawWeather() {
 	console.log("THE WEATHER MAN SAYS:", _weatherService.Weather)
+
+	document.getElementById('weather').innerHTML = _weatherService.Weather.Template
 }
+
+
 
 export default class WeatherController {
 
 	constructor() {
-		_weatherService.addSubscriber('weather', drawWeather)
+		_weatherService.addSubscriber('weather', _drawWeather)
 		_weatherService.getWeather()
 	}
 

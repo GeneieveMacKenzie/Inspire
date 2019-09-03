@@ -4,6 +4,11 @@ const _todoService = new TodoService()
 
 //TODO Create the render function
 function _drawTodos() {
+	let list = _todoService.Todo
+	list.forEach((todo, id) => {
+		template += todo.getTemplate(id)
+	})
+	document.getElementById("add-todo").innerHTML = template
 
 }
 
@@ -17,6 +22,7 @@ export default class TodoController {
 	constructor() {
 		//TODO Remember to register your subscribers
 		_todoService.addSubscriber('error', _drawError)
+		_todoService.addSubscriber('todos', _drawTodos)
 		_todoService.getTodos()
 	}
 
@@ -24,21 +30,29 @@ export default class TodoController {
 		e.preventDefault()
 		var form = e.target
 		var todo = {
-			//TODO build the todo object from the data that comes into this method
+			_id: form._id,
+			description: form.description
 		}
+		form.reset()
+		//TODO build the todo object from the data that comes into this method
 		_todoService.addTodo(todo)
 	}
 
-	//NOTE This method will pass an Id to your service for the TODO that will need to be toggled
-	toggleTodoStatus(todoId) {
-		_todoService.toggleTodoStatus(todoId)
-	}
 
-	//NOTE This method will pass an Id to your service for the TODO that will need to be deleted
-	removeTodo(todoId) {
-		_todoService.removeTodo(todoId)
-	}
+	// //NOTE This method will pass an Id to your service for the TODO that will need to be toggled
+	// toggleTodoStatus(todoId) {
+	// 	let todo = _state.todos.find(todo => todo._id == todoId)
+	// 	if (!todo) {
+	// 		alert('Todo not found')
+	// 		return false
+	// 	}
+	// 	_todoService.toggleTodoStatus(todoId)
+		
+	// }
 
 
-
+	// //NOTE This method will pass an Id to your service for the TODO that will need to be deleted
+	// removeTodo(todoId) {
+	// 	_todoService.removeTodo(todoId)
+	// }
 }

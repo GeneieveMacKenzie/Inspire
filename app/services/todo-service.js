@@ -1,8 +1,8 @@
 //NOTE your service is all set up for the observer pattern but there is still work to be done
 
 // @ts-ignore
-const todoApi = axios.create({
-	baseURL: 'https://bcw-sandbox.herokuapp.com/api/jake/todos/',
+const _todoApi = axios.create({
+	baseURL: 'https://bcw-sandbox.herokuapp.com/api/Gen/todos',
 	timeout: 3000
 });
 
@@ -21,8 +21,13 @@ function _setState(prop, data) {
 }
 
 export default class TodoService {
+
 	get TodoError() {
 		return _state.error
+	}
+
+	get Todos() {
+		return _state.todos
 	}
 
 	addSubscriber(prop, fn) {
@@ -31,38 +36,47 @@ export default class TodoService {
 
 	getTodos() {
 		console.log("Getting the Todo List")
-		todoApi.get()
+		_todoApi.get()
 			.then(res => {
-				//TODO Handle this response from the server
+				_setState('todos', res.data)
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
 
 	addTodo(todo) {
-		todoApi.post('', todo)
+		_todoApi.post('', todo)
 			.then(res => {
-				//TODO Handle this response from the server (hint: what data comes back, do you want this?)
+				_state.todos.push(res.data.description)
+				_setState('todos', _state.todos)
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
 
-	toggleTodoStatus(todoId) {
-		let todo = _state.todos.find(todo => todo._id == todoId)
-		//TODO Make sure that you found a todo, 
-		//		and if you did find one
-		//		change its completed status to whatever it is not (ex: false => true or true => false)
+	// toggleTodoStatus(todoId) {
+	// 	let todo = _state.todos.find(todo => todo._id == todoId)
+	// 	//TODO Make sure that you found a todo, 
+	// 	//		and if you did find one
+	// 	//		change its completed status to whatever it is not (ex: false => true or true => false)
+	// 	todo.completed = !todo.completed
+	// 	todoApi.put(todoId, todo)
+	// 		.then(res => {
+	// 			debugger
+	// 			this.getTodos()
+	// 			_setState('todos', _state.todos)
+	// 			//TODO do you care about this data? or should you go get something else?
 
-		todoApi.put(todoId, todo)
-			.then(res => {
-				//TODO do you care about this data? or should you go get something else?
-			})
-			.catch(err => _setState('error', err.response.data))
-	}
+	// 		})
+	// 		.catch(err => _setState('error', err.response.data))
+	// }
 
-	removeTodo(todoId) {
-		//TODO Work through this one on your own
-		//		what is the request type
-		//		once the response comes back, what do you need to insure happens?
-	}
+	// removeTodo(todoId) {
+	// 	_todoApi.delete(todoId)
+	// 		.then(res => {
+	// 			let index = _state.todos.findIndex(todo => todo._id == todoId)
+	// 			_state.todos.splice(index, 1)
+	// 			_setState('todos', _state.todos)
+	// 		})
+
+	// }
 
 }
