@@ -3,7 +3,7 @@ import Image from "../Models/image.js"
 // @ts-ignore
 const imgApi = axios.create({
 	baseURL: '//bcw-sandbox.herokuapp.com/api/images',
-	timeout: 5000
+	timeout: 3000
 });
 
 let _state = {
