@@ -48,8 +48,8 @@ export default class TodoService {
 	addTodo(todo) {
 		_todoApi.post('', todo)
 			.then(res => {
-				this.Todos.push(new Todo(res.data.data.description))
-				_setState('todos', this.Todos)
+				_state.todos.push(new Todo(res.data.data))
+				_setState('todos', _state.todos)
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
@@ -63,7 +63,6 @@ export default class TodoService {
 		todoApi.put(id, todo)
 			.then(res => {
 				this.getTodos()
-				_setState('todos', _state.todos)
 				//TODO do you care about this data? or should you go get something else?
 
 			})
@@ -71,7 +70,8 @@ export default class TodoService {
 	}
 
 	removeTodo(id) {
-		_todoApi.delete(id)
+		let todo = _state.todos.find(todo => todo._id == id)
+		_todoApi.delete(id, todo)
 			.then(res => { 
 				let index = _state.todos.findIndex(t => t._id == id)
 				_state.todos.splice(index, 1)

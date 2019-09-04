@@ -16,24 +16,18 @@
 		<div id="weather">
 		</div>
 	</div>
-	<div>
-		<div id="todo-error"></div>
-		<div class="row d-flex justify-content-center">
-			<form onsubmit="app.controllers.todoController.addTodo(event)">
-				<div class="form-group" id="description">
-					<input type="text" class="form-control" name="description" placeholder='Add Todo' required>
-				</div>
-				<button class="btn-sm" type="submit">add</button>
-			</form>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-3" id="add"></div>	
-	</div>
+	<div class="row" id="quote">
 
-	<div class="row flex2" style="color: rgb(105, 103, 103)">
-		<div id="quote">
-		</div>
+	</div>
+	<div id="todo-error"></div>
+	<div class="row d-flex justify-content-center todo">
+		<div class="col" id="add"></div>
+		<form onsubmit="app.controllers.todoController.addTodo(event)">
+			<label for="total" id="total"></label>
+			<div class="form-group" id="todos">
+				<input type="text" class="form-control" name="description" placeholder='Add Todo' required>
+			</div>
+		</form>
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 	<script type="module" src="app/main.js"></script>

@@ -13,7 +13,7 @@ export default class Weather {
 
   get Template() {
     return `
-      <div class="card" style="background-color:rgb(255, 255, 255,.6)" id="add">
+      <div class="card" style="background-color:rgb(255, 255, 255,.6)">
         <div class="card-body">
            <h1 class="card-title">${this.city}</h1>
            <h3 class="card-text">${this.kelvin}</h3>

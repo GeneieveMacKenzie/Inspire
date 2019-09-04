@@ -4,11 +4,12 @@ const _todoService = new TodoService()
 
 //TODO Create the render function
 function _drawTodos() {
-	let template = ""
+	let template = `<h4 class="text-center totalCount">Total: ${_todoService.Todos.filter(t=> !t.completed).length}</h4>`
 	_todoService.Todos.forEach(t => {
 		template += t.Template
 	})
 	document.getElementById("add").innerHTML = template
+
 }
 
 //NOTE Keep an eye on your console for any of these errors
@@ -40,11 +41,6 @@ export default class TodoController {
 
 	// //NOTE This method will pass an Id to your service for the TODO that will need to be toggled
 	toggleTodoStatus(todoId) {
-		let todo = _state.todos.find(todo => todo._id == todoId)
-		if (!todo) {
-			alert('Todo not found')
-			return false
-		}
 		_todoService.toggleTodoStatus(todoId)
 		
 	}
@@ -55,3 +51,4 @@ export default class TodoController {
 		_todoService.removeTodo(id)
 	}
 }
+
