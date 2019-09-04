@@ -3,6 +3,7 @@ export default class Todo {
         this._id = data._id
         this.description = data.description
         this.completed = data.completed
+        this.checked = data.checked
     }
 
     //FIXME add a input type checkbox, on change toggle todo status , 
@@ -11,7 +12,7 @@ export default class Todo {
         return`
             <div class="card" style="background-color:rgb(255, 255, 255,.2)>
                 <div class="card-body">
-                <h4 class="card-title">${this.description} <input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')"></h4>
+                <h4 class="card-title">${this.description} <input type="checkbox" onclick="app.controllers.todoController.toggleTodoStatus('${this._id}')" ${this.completed ? 'checked' : ''}></h4>
                 <button class="btn-sm" type="reset" onclick="app.controllers.todoController.removeTodo('${this._id}')">delete</button>
                 </div>
             </div>
