@@ -60,7 +60,7 @@ export default class TodoService {
 		//		and if you did find one
 		//		change its completed status to whatever it is not (ex: false => true or true => false)
 		todo.completed = !todo.completed
-		todoApi.put(id, todo)
+		_todoApi.put(id, todo)
 			.then(res => {
 				this.getTodos()
 				//TODO do you care about this data? or should you go get something else?
