@@ -3,7 +3,7 @@ import Todo from "../models/todo.js";
 
 // @ts-ignore
 const _todoApi = axios.create({
-	baseURL: 'https://bcw-sandbox.herokuapp.com/api/Gen/todos',
+	baseURL: 'https://bcw-sandbox.herokuapp.com/api/Gen/todos/',
 	timeout: 3000
 });
 
